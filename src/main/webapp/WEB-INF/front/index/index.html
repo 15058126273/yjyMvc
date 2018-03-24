@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/common/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+front index : ${param!'无'}
+
+<input type="button" onclick="ajax(1)" value="成功" />
+<input type="button" onclick="ajax(2)" value="失败" />
+
+<script>
+    function ajax(type) {
+        $.ajax({
+            url: type === 1 ? "ajax1.cc" : "ajax2.cc",
+            type: "post",
+            dataType: 'json',
+            data: {},
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    }
+</script>
+</body>
+</html>
