@@ -27,14 +27,11 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "/index")
     public String index(HttpServletRequest request, Model model) {
         log.info("index >>>>>>>>>>>>>>>>>>>>");
-
-//        User user = new User();
-//        user.setUsername("yjy3");
-//        user = userService.save(user);
-//        log.info("saved user : {}", user);
-
         try {
-            userService.testTransaction();
+            User user = userService.get(85L);
+            log.info("user1:" + user);
+            user = userService.get(85L);
+            log.info("user2:" + user);
         } catch (Exception e) {
             log.info("throw exception > ", e);
         }

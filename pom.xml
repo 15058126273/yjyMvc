@@ -94,9 +94,9 @@
         </dependency>
         <!-- 二级缓存实现 -->
         <dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>3.5.2</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>5.1.2.Final</version>
         </dependency>
 
         <!-- Mysql 驱动 -->

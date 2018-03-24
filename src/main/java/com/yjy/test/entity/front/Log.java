@@ -1,6 +1,7 @@
 package com.yjy.test.entity.front;
 
 import com.yjy.test.base.BaseEntity;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
@@ -10,6 +11,8 @@ import static javax.persistence.GenerationType.TABLE;
 
 @Entity
 @Table(name = "y_log")
+// 启用二级缓存
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Log extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

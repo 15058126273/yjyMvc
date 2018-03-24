@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ehcache>
+
+    <!-- 缓存存储位置 -->
+    <diskStore path="java.io.tmpdir"/>
+
+    <!-- 全局配置 -->
+    <defaultCache maxElementsInMemory="10000" eternal="false" overflowToDisk="true"
+            timeToIdleSeconds="120" timeToLiveSeconds="120" diskPersistent="false" />
+
+    <!-- cache:为指定名称的对象进行缓存的特殊配置 name:指定对象的完整名-->
+    <cache name="com.yjy.test.entity.front.User"
+           maxElementssInMemory="10000" eternal="false" overflowToDisk="true"
+           timeToIdleSeconds="120" timeToLiveSeconds="120" diskPersistent="false" />
+
+</ehcache>
