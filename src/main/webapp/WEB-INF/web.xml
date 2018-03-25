@@ -17,10 +17,18 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            /WEB-INF/config/application.xml
-            /WEB-INF/config/servlet-front.xml
-            /WEB-INF/config/servlet-back.xml
+            <!-- spring&hibernate -->
+            /WEB-INF/config/spring-hibernate.xml
+            <!-- spring&freemarker-->
+            /WEB-INF/config/spring-freemarker.xml
+            <!-- spring 公用bean配置 -->
             /WEB-INF/config/bean-context.xml
+            <!-- 前台servlet配置 -->
+            /WEB-INF/config/servlet-front.xml
+            <!-- 后台servlet配置 -->
+            /WEB-INF/config/servlet-back.xml
+            <!-- spring&quartz定时任务配置 -->
+            <!--/WEB-INF/config/spring-quartz.xml-->
         </param-value>
     </context-param>
 

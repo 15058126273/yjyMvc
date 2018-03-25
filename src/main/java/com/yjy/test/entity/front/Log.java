@@ -5,9 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.TABLE;
 
 @Entity
 @Table(name = "y_log")

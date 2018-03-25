@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 加载jdbc配置 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/config/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 设置为close使Spring容器关闭同时数据源能够正常关闭，以免造成连接泄露 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${data.driverClassName}" />
+        <property name="url" value="${data.url}" />
+        <property name="username" value="${data.username}" />
+        <property name="password" value="${data.password}" />
+        <property name="defaultReadOnly" value="${data.defaultReadOnly}" />
+        <property name="initialSize" value="${data.initialSize}" />
+        <property name="maxActive" value="${data.maxActive}" />
+        <property name="maxIdle" value="${data.maxIdle}"/>
+        <property name="minIdle" value="${data.minIdle}" />
+        <property name="maxWait" value="${data.maxWait}" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <!-- MySQL的方言 -->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="javax.persistence.validation.mode">${javax.persistence.validation.mode}</prop>
+                <!-- 必要时在数据库新建所有表格 -->
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <!-- 用更漂亮的格式显示sql语句-->
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <!-- 配置current session的上下文环境，方便我们调用sessionFactory获取当前线程统一个session对象 -->
+                <prop key="current_session_context_class">${current_session_context_class}</prop>
+                <!-- 是否启用二级缓存 -->
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+                <!-- 二级缓存实现 -->
+                <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+            </props>
+        </property>
+        <!-- 配置需要扫描的包路径，在该包下，所有的类注解配置都会被扫描 -->
+        <property name="packagesToScan" value="com.yjy.test.entity" />
+    </bean>
+
+    <!-- 事务管理器配置, Hibernate单数据源事务 -->
+    <bean id="defaultTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="defaultTransactionManager" proxy-target-class="true" />
+
+
+</beans>
