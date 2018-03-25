@@ -6,18 +6,27 @@
     <script src="/common/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-front index : ${param!'无'}
+front <br/>
+[#if user??]
+id: ${(user.id)!}
+username: ${(user.username)!}
+[#else]
+无
+[/#if]
 
+
+<input type="text" value="name" id="param" />
 <input type="button" onclick="ajax(1)" value="成功" />
 <input type="button" onclick="ajax(2)" value="失败" />
 
 <script>
     function ajax(type) {
+        var param = $("#param").val();
         $.ajax({
             url: type === 1 ? "ajax1.cc" : "ajax2.cc",
             type: "post",
             dataType: 'json',
-            data: {},
+            data: {username: param},
             success: function(data) {
                 console.log(data);
             }

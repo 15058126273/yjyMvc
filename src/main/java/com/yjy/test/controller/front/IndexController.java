@@ -25,13 +25,12 @@ public class IndexController extends BaseController {
     private UserService userService;
 
     @RequestMapping(value = "/index")
-    public String index(HttpServletRequest request, Model model) {
+    public String index(Long id, HttpServletRequest request, Model model) {
         log.info("index >>>>>>>>>>>>>>>>>>>>");
         try {
-            User user = userService.get(85L);
+            User user = userService.get(id);
             log.info("user1:" + user);
-            user = userService.get(85L);
-            log.info("user2:" + user);
+            model.addAttribute("user", user);
         } catch (Exception e) {
             log.info("throw exception > ", e);
         }
@@ -39,9 +38,9 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping(value = "/ajax1", method = RequestMethod.POST)
-    public void testAjax(HttpServletRequest request, HttpServletResponse response) {
+    public void testAjax(String username, HttpServletRequest request, HttpServletResponse response) {
         User user = new User();
-        user.setUsername("ajax");
+        user.setUsername(username);
         user = userService.save(user);
         ajaxSuccessJson(response, JSON.toJSONString(user));
     }
