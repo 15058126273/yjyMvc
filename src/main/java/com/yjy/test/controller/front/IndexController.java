@@ -28,9 +28,11 @@ public class IndexController extends BaseController {
     public String index(Long id, HttpServletRequest request, Model model) {
         log.info("index >>>>>>>>>>>>>>>>>>>>");
         try {
-            User user = userService.get(id);
-            log.info("user1:" + user);
-            model.addAttribute("user", user);
+            if (id != null) {
+                User user = userService.get(id);
+                log.info("user1:" + user);
+                model.addAttribute("user", user);
+            }
         } catch (Exception e) {
             log.info("throw exception > ", e);
         }
