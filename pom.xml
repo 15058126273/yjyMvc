@@ -127,6 +127,22 @@
             <artifactId>log4j-web</artifactId>
             <version>2.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.6</version>
+        </dependency>
 
         <!-- commons -->
         <dependency>
@@ -147,8 +163,6 @@
             <artifactId>quartz</artifactId>
             <version>2.3.0</version>
         </dependency>
-
-
 
         <!-- tomcat -->
         <dependency>
