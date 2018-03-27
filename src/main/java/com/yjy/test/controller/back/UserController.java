@@ -14,21 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class IndexController extends BaseController {
+@RequestMapping("/user")
+public class UserController extends BaseController {
 
-    private static final Logger log = LogManager.getLogger(IndexController.class);
+    private static final Logger log = LogManager.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/index.do")
-    public String index(HttpServletRequest request, Model model) {
-        return "back/index/index";
-    }
-
-    @RequestMapping(value = "/hello.do")
-    public String hello(HttpServletRequest request, Model model) {
-        return "back/index/hello";
+    @RequestMapping(value = "/list.do")
+    public String list(Integer pageNo, Integer pageSize, HttpServletRequest request, Model model) {
+        try {
+            Pagination pagination = userService.getPage(Pagination.cpn(pageNo), Pagination.cps(pageSize), OrderBy.desc("id"));
+            model.addAttribute("pagination", pagination);
+        } catch (Exception e) {
+            log.error("index error", e);
+        }
+        return "back/user/list";
     }
 
 }

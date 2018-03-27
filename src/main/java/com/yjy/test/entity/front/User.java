@@ -19,8 +19,12 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, length = 50)
     private String username;
+    @Column(name = "password", nullable = false, length = 32)
+    private String password;
+    @Column(name = "sex", length = 1)
+    private Integer sex;
 
     public Long getId() {
         return id;
@@ -28,6 +32,22 @@ public class User extends BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public String getUsername() {
@@ -43,6 +63,8 @@ public class User extends BaseEntity {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
                 '}';
     }
 }
