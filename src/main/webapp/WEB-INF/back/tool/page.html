@@ -1,15 +1,77 @@
 [#if pagination??&& pagination.list??&& pagination.list?size > 0]
+<input type="hidden" name="pageNo" value="${pagination.pageNo}" id="paginationPageNo"/>
+
 <nav aria-label="Page navigation example">
+
     <ul class="pagination justify-content-end">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+            <button type="button" class="btn btn-light">
+                记录数 <span class="badge badge-light">${pagination.totalCount}</span>
+            </button>
+        </li>
+        <li class="page-item">
+            <button type="button" class="btn btn-light">
+                页数 <span class="badge badge-light">${pagination.totalPage}</span>
+            </button>
+        </li>
+        [#if pagination.pageNo > 1]
+        <li class="page-item"><a class="page-link" data-page="1" tabindex="-1">首页</a></li>
+        [/#if]
+        <li class="page-item [#if pagination.pageNo <= 1]disabled[/#if]">
+            <a class="page-link"  data-page="${pagination.pageNo - 1}" tabindex="0">&laquo;</a>
+        </li>
+        [#if pagination.pageNo - 3 > 0]
+        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+        [/#if]
+        [#if pagination.pageNo - 2 > 0]
+        <li class="page-item"><a class="page-link" data-page="${pagination.pageNo - 2}" tabindex="1">${pagination.pageNo - 2}</a></li>
+        [/#if]
+        [#if pagination.pageNo - 1 > 0]
+        <li class="page-item"><a class="page-link" data-page="${pagination.pageNo - 1}" tabindex="2">${pagination.pageNo - 1}</a></li>
+        [/#if]
+        <li class="page-item active"><a class="page-link" data-page="${pagination.pageNo}" tabindex="3">${pagination.pageNo}</a></li>
+        [#if pagination.pageNo + 1 <= pagination.totalPage]
+        <li class="page-item"><a class="page-link" data-page="${pagination.pageNo + 1}" tabindex="4">${pagination.pageNo + 1}</a></li>
+        [/#if]
+        [#if pagination.pageNo + 2 <= pagination.totalPage]
+        <li class="page-item"><a class="page-link" data-page="${pagination.pageNo + 2}" tabindex="5">${pagination.pageNo + 2}</a></li>
+        [/#if]
+        [#if pagination.pageNo + 3 <= pagination.totalPage]
+        <li class="page-item"><a class="page-link"  data-page="${pagination.pageNo + 3}" tabindex="6">${pagination.pageNo + 3}</a></li>
+        [/#if]
+        [#if pagination.pageNo + 4 <= pagination.totalPage]
+        <li class="page-item disabled"><a class="page-link" >...</a></li>
+        [/#if]
+        <li class="page-item [#if pagination.totalPage <= pagination.pageNo]disabled[/#if]">
+            <a class="page-link" tabindex="7" data-page="${pagination.pageNo + 1}">&raquo;</a>
+        </li>
+        [#if pagination.pageNo < pagination.totalPage]
+        <li class="page-item">
+            <a class="page-link" tabindex="8" data-page="${pagination.totalPage}" >尾页</a>
+        </li>
+        [/#if]
+        <li class="page-item">
+            <input id="pointPage" tabindex="9" class="form-control" style="width: 60px; text-align: center; padding: 0.375rem 0.2rem;" type="text" value="${pagination.pageNo}" />
+        </li>
+        <li class="page-item">
+            <a class="page-link" tabindex="10" data-page="pointPage">跳转</a>
         </li>
     </ul>
 </nav>
+
+<script>
+    $(function () {
+        $("#paginationForm").find(".page-link").click(function() {
+            var dataPage = $(this).attr("data-page");
+            if (dataPage) {
+                if (isNaN(dataPage)) {
+                    dataPage = $("#" + dataPage).val();
+                }
+                $("#paginationPageNo").val(dataPage);
+                $("#paginationForm").submit();
+            }
+        })
+    })
+
+</script>
 [/#if]

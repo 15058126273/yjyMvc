@@ -43,6 +43,8 @@ public class IndexController extends BaseController {
     public void testAjax(String username, HttpServletRequest request, HttpServletResponse response) {
         User user = new User();
         user.setUsername(username);
+        user.setPassword("1235648");
+        user.setSex((int)Math.floor(Math.random() * 3));
         user = userService.save(user);
         ajaxSuccessJson(response, JSON.toJSONString(user));
     }
