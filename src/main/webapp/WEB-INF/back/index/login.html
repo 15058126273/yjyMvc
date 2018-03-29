@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>登入</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/common/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/common/back/css/login.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+
+
+<form class="form-signin" action="${base}/login.do" method="post">
+
+    <img class="mb-4" src="/common/images/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">登  入</h1>
+    <label for="inputEmail" class="sr-only">用户名</label>
+    <input type="text" name="username" id="inputEmail" class="form-control" placeholder="用户名" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">密码</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required="">
+    <!--<div class="checkbox mb-3">-->
+        <!--<label>-->
+            <!--<input type="checkbox" value="remember-me"> Remember me-->
+        <!--</label>-->
+    <!--</div>-->
+    [#if errMsg??]
+    <div class="alert alert-danger" role="alert">
+        ${errMsg}
+    </div>
+    [/#if]
+    <button class="btn btn-lg btn-primary btn-block" type="submit">确  认</button>
+    <p class="mt-5 mb-3 text-muted">© 2018</p>
+</form>
+</body>
+</html>

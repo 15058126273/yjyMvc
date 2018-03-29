@@ -18,9 +18,11 @@ public class Admin extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Long id; // id
     @Column(name = "username", nullable = false)
-    private String username;
+    private String username; // 用户名
+    @Column(name = "password", nullable = false)
+    private String password; // 密码
 
     public Long getId() {
         return id;
@@ -38,4 +40,20 @@ public class Admin extends BaseEntity {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

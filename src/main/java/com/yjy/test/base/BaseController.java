@@ -4,7 +4,9 @@ import com.yjy.test.controller.ErrorCode;
 import com.yjy.test.util.UnicodeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -51,6 +53,19 @@ public abstract class BaseController extends BaseClass {
                 log.error("无法返回请求数据", e);
             }
         }
+    }
+
+    /**
+     * 跳转页面
+     * @param ftlDir 模板地址
+     * @param ftlName 模板名称
+     * @param request 请求
+     * @param model 模型数据
+     * @return 模板
+     */
+    protected String page(String ftlDir, String ftlName, HttpServletRequest request, Model model) {
+        model.addAttribute("globalMsg", "HELLO PAGE !");
+        return ftlDir + "/" + ftlName;
     }
 
 }

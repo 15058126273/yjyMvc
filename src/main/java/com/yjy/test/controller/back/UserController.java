@@ -1,6 +1,5 @@
 package com.yjy.test.controller.back;
 
-import com.yjy.test.base.BaseController;
 import com.yjy.test.service.UserService;
 import com.yjy.test.util.hibernate.OrderBy;
 import com.yjy.test.util.hibernate.Pagination;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends BaseController {
+public class UserController extends BaseBackController {
 
     private static final Logger log = LogManager.getLogger(UserController.class);
 

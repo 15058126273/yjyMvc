@@ -13,7 +13,16 @@ public abstract class BaseClass {
      * @return 是否为空
      */
     protected static boolean isBlank(String s) {
-        return StringUtils.isNoneBlank(s);
+        return StringUtils.isBlank(s);
+    }
+
+    /**
+     * 验证字符串
+     * @param s 字符串
+     * @return 是否不为空
+     */
+    protected static boolean notBlank(String s) {
+        return StringUtils.isNotBlank(s);
     }
 
     /**

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class IndexController extends BaseController {
+public class IndexController extends BaseFrontController {
 
     private static final Logger log = LogManager.getLogger(IndexController.class);
 
@@ -36,7 +36,7 @@ public class IndexController extends BaseController {
         } catch (Exception e) {
             log.info("throw exception > ", e);
         }
-        return "front/index/index";
+        return page("index", "index", request, model);
     }
 
     @RequestMapping(value = "/ajax1", method = RequestMethod.POST)
@@ -51,7 +51,7 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = "/ajax2", method = RequestMethod.POST)
     public void testAjax2(HttpServletRequest request, HttpServletResponse response) {
-        ajaxErrorJson(response, "error", ErrorCode.ERR_0000);
+        ajaxErrorJson(response, "error", ErrorCode.ERR_SYSTEM);
     }
 
 

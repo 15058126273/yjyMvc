@@ -5,8 +5,10 @@
 
     <!-- Services -->
     <bean id="userService" class="com.yjy.test.service.impl.UserServiceImpl"/>
+    <bean id="adminService" class="com.yjy.test.service.impl.AdminServiceImpl"/>
 
     <!-- DAOs-->
     <bean id="userDao" class="com.yjy.test.dao.impl.UserDaoImpl"/>
+    <bean id="adminDao" class="com.yjy.test.dao.impl.AdminDaoImpl"/>
 
 </beans>

@@ -40,6 +40,7 @@
         <!--过滤掉spring的一些无用的DEBUG信息-->
         <logger name="org.springframework" level="INFO" />
         <logger name="org.hibernate" level="INFO" />
+        <logger name="net.sf.ehcache" level="INFO" />
         <Root level="all">
             <!-- 这里是输入到文件，很重要-->
             <AppenderRef ref="info-log"/>
