@@ -69,7 +69,7 @@ public class IndexController extends BaseBackController {
                 Admin admin = adminService.login(username, password);
                 if (admin != null) {
                     request.getSession().setAttribute(KEY_CURRENT_ADMIN, admin);
-                    return page("index", "index", request, model);
+                    return "redirect:/manager/index.do";
                 } else {
                     info = "用户名或密码错误";
                     code = ErrorCode.ERR_LOGIN_FAILED;

@@ -29,7 +29,7 @@ public class UserController extends BaseBackController {
         } catch (Exception e) {
             log.error("index error", e);
         }
-        return "back/user/list";
+        return page("user", "list", request, model);
     }
 
 }
