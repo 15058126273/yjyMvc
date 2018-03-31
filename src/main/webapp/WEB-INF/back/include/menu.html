@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/common/back/css/sidebar-menu.css">
+<script src="/common/js/jquery-3.3.1.min.js"></script>
+<script src="/common/back/js/sidebar-menu.js"></script>
+
+<div id="page-menu" class=" col-lg-2 col-md-2 col-sm-12 col-12 col-p0">
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="header "></li>
+                <li class="treeview">
+                    <a class="" href="#">
+                        <span>用户管理</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="nav-item">
+                            <a class="nav-item-link" href="${base}/user/list.do">用户列表</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item-link" href="${base}/user/loginList.do">登录记录</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a class="" href="#">
+                        <span>系统设置</span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li class="nav-item"><a class="nav-item-link" href="#">参数设置</a></li>
+                        <li class="nav-item"><a class="nav-item-link" href="#">系统配置</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <span>Multilevel</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="#">Level One</a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Level Two</a></li>
+                                <li>
+                                    <a href="#">Level Two</a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="#">Level Three</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+
+
+    <script>
+        //
+        $.sidebarMenu($('.sidebar-menu'));
+        $(function() {
+            // 浏览器宽度
+            var width = window.innerWidth;
+            // 菜单栏宽度
+            var menuW = document.getElementById("page-menu").offsetWidth;
+            // if 菜单栏列为占满一列
+            if (menuW < width * 0.5) {
+                // 浏览器高度
+                var height = document.documentElement.clientHeight || document.body.clientHeight;
+                // 菜单栏高度
+                var menuH = document.getElementById("page-menu").offsetHeight;
+                // 顶部导航栏高度
+                var topH = document.getElementById("page-top").offsetHeight;
+                // if 菜单栏 + 导航栏 未占满屏幕高度
+                if (menuH + topH < height) {
+                    // 拉长菜单栏高度
+                    $("#page-menu").css("height", (height - topH) + "px");
+                }
+            }
+        })
+    </script>
+</div>

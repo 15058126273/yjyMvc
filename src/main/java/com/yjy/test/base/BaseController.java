@@ -65,7 +65,9 @@ public abstract class BaseController extends BaseClass {
      */
     protected String page(String ftlDir, String ftlName, HttpServletRequest request, Model model) {
         model.addAttribute("globalMsg", "HELLO PAGE !");
-        return ftlDir + "/" + ftlName;
+
+        String finalPath = ftlDir + "/" + ftlName;
+        return finalPath;
     }
 
 }

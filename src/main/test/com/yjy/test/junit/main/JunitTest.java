@@ -1,5 +1,6 @@
 package com.yjy.test.junit.main;
 
+import com.yjy.test.util.MD5Util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -12,11 +13,7 @@ public class JunitTest {
 
     @Test
     public void tryLog () {
-        try {
-            ApplicationContext context = new ClassPathXmlApplicationContext("application.xml", "spring-quartz.xml");
-        } catch (Exception e) {
-           e.printStackTrace();
-        }
+        log.info(MD5Util.MD5Encode("admin"));
     }
 
 }

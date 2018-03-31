@@ -207,6 +207,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
+                    <hostName>192.168.65.95</hostName>
                     <port>81</port>
                     <path>/</path>
                 </configuration>

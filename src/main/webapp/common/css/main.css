@@ -2,7 +2,7 @@ table {
     table-layout:fixed;
 }
 
-td {
+td, li {
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;

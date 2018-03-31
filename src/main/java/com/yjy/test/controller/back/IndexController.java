@@ -36,7 +36,7 @@ public class IndexController extends BaseBackController {
      */
     @RequestMapping(value = "/index.do")
     public String index(HttpServletRequest request, Model model) {
-        return page("index", "index", request, model);
+        return unifiedPage("index", "index", request, model);
     }
 
     /**
@@ -86,17 +86,6 @@ public class IndexController extends BaseBackController {
         model.addAttribute("errMsg", info);
         model.addAttribute("errCode", code);
         return toLogin(request, model);
-    }
-
-    /**
-     * 返回后台欢迎页
-     * @param request
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/hello.do")
-    public String hello(HttpServletRequest request, Model model) {
-        return page("index", "hello", request, model);
     }
 
 }

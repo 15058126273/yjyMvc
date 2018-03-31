@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${pageTitle!}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/common/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/common/css/main.css" />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- 顶部导航栏 -->
+[#include "/back/include/top.html" /]
+
+<!-- 页面容器 -->
+<div class="container-fluid">
+
+    <!-- 行容器 -->
+    <div class="row row-fluid">
+
+        <!-- 主菜单 这是列-->
+        [#include "/back/include/menu.html" /]
+
+        <!-- 这也是一列 -->
+        <div class="content-body table-responsive-lx col-lg-10 col-md-10 col-sm-10 col-xl-10">
+            <!-- 真正的内容 -->
+            [#include "/back/${dir}/${ftlName}.html" /]
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

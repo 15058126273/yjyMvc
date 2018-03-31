@@ -24,6 +24,12 @@ public class BaseBackController extends BaseController {
      * @param model 模型数据
      * @return 模板
      */
+    protected String unifiedPage(String dir, String pageName, HttpServletRequest request, Model model) {
+        model.addAttribute("dir", dir);
+        model.addAttribute("ftlName", pageName);
+        return this.page("", "page", request, model);
+    }
+
     @Override
     protected String page(String dir, String pageName, HttpServletRequest request, Model model) {
         model.addAttribute("base", "/manager");
