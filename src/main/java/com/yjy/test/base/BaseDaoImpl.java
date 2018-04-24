@@ -102,6 +102,16 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends BaseClass implem
         return crit.list();
     }
 
+    @SuppressWarnings("unchecked")
+    public List<T> getList(T entity, OrderBy... orders) {
+        Condition[] conditions = null;
+        if (orders != null) {
+            conditions = Arrays.copyOf(orders, orders.length);
+        }
+        Criteria criteria = getCritByT(entity, false, conditions);
+        return criteria.list();
+    }
+
     public Pagination getPage(int pageNo, int pageSize, OrderBy... orders) {
         Criteria crit = createCriteria();
         return getByCriteria(crit, pageNo, pageSize, null, OrderBy.asOrders(orders));

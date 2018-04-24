@@ -29,10 +29,18 @@ public interface BaseDao<T extends BaseEntity> {
 
     /**
      * 获取所有数据
-     * @param orders 分页规则
+     * @param orders 排序规则
      * @return 所有数据
      */
     List<T> getAll(OrderBy... orders);
+
+    /**
+     * 根据实体查询列表
+     * @param entity 实体
+     * @param orders 排序规则
+     * @return 列表
+     */
+    List<T> getList(T entity, OrderBy... orders);
 
     /**
      * 分页查询

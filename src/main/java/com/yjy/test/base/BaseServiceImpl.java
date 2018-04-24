@@ -73,6 +73,16 @@ public class BaseServiceImpl<T extends BaseEntity> extends BaseClass implements 
     }
 
     /**
+     * 根据实体查询列表
+     * @param entity 实体
+     * @param orders 排序规则
+     * @return 列表
+     */
+    public List<T> getList(T entity, OrderBy... orders) {
+        return dao.getList(entity, orders);
+    }
+
+    /**
      * 分页查询
      * @param pageNo 页号
      * @param pageSize 条数

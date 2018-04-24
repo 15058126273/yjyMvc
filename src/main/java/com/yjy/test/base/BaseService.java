@@ -35,6 +35,14 @@ public interface BaseService<T extends BaseEntity> {
     List<T> getAll(OrderBy... orders);
 
     /**
+     * 根据实体查询列表
+     * @param entity 实体
+     * @param orders 排序规则
+     * @return 列表
+     */
+    List<T> getList(T entity, OrderBy... orders);
+
+    /**
      * 分页查询
      * @param pageNo 页号
      * @param pageSize 条数
